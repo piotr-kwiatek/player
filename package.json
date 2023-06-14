@@ -2,7 +2,7 @@
   "name": "player",
   "version": "0.1.0",
   "private": true,
-  "homepage": "piotr-kwiatek.github.io",
+  "homepage": "https://piotr-kwiatek.github.io/player",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -35,7 +35,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
