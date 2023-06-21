@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { MEDIA_FILES } from './constants';
 
 function App() {
   const [isMusicDownloaded] = useState<boolean>(false);
@@ -9,12 +10,16 @@ function App() {
   const handleMusic = (): void => {
     setIsMusicPlaying(prevState => !prevState);
   }
-  const handleDownload = (): void => {}
-
+  const handleDownload = (): void => {
+    window.caches.open('bgplayer-media').then((cache) => {
+      cache.add(`${process.env.PUBLIC_URL}/${MEDIA_FILES[0]}`);
+    })
+  }
 
   useEffect(() => {
-    if (!isMusicFetched) {
-      audio.current = new Audio(`${process.env.PUBLIC_URL}/music/combat/hip-hop-street-legal-14405.mp3`);
+    if (isMusicPlaying && !isMusicFetched) {
+      audio.current = new Audio(`${process.env.PUBLIC_URL}/${MEDIA_FILES[0]}`);
+      fetch(`${process.env.PUBLIC_URL}/${MEDIA_FILES[0]}`)
       setIsMusicFetched(true);
     }
     isMusicPlaying ? audio.current?.play() : audio.current?.pause()

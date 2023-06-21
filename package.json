@@ -2,7 +2,7 @@
   "name": "player",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://piotr-kwiatek.github.io/player",
+  "homepage-tmp": "https://piotr-kwiatek.github.io/player",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -45,6 +45,14 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": ["**/*.ts?(x)"],
+        "rules": {
+          "no-restricted-globals": ["off", "self"]
+        }
+      }
     ]
   },
   "browserslist": {
